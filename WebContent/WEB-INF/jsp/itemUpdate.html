@@ -24,24 +24,25 @@
 			<h1>商品更新</h1>
 		</div>
 	</section>
-<form class="form-signin" action="UserUpdateServlet" method="post">
-<div class="album py-5 bg-light">
+	<form class="form-signin" action="UserUpdateServlet" method="post">
+		<div class="album py-5 bg-light">
 			<div class="container">
-			<div class="row">
-				<div class="col-6">商品CODE</div>
-				<div class="col-6">${item.code}</div>
-				<input type="hidden" name="itemId" value="${item.id}">
-			</div>
-			<br> <br> <input type="hidden" name="itemId" value="${item.id}">
-
-			<div class="form-group row">
-				<label for="itemName" class="col-sm-6 col-form-label">商品名</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="itemName"
-						placeholder="${item.name}" name="itemName">
+				<div class="row">
+					<div class="col-6">商品CODE</div>
+					<div class="col-6">${item.code}</div>
+					<input type="hidden" name="itemId" value="${item.id}">
 				</div>
-			</div>
-			<br>
+				<br> <br> <input type="hidden" name="itemId"
+					value="${item.id}">
+
+				<div class="form-group row">
+					<label for="itemName" class="col-sm-6 col-form-label">商品名</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="itemName"
+							placeholder="${item.name}" name="itemName">
+					</div>
+				</div>
+				<br>
 
 				<div class="form-group row">
 					<label for="image" class="col-sm-6 col-form-label">画像</label>
@@ -55,17 +56,24 @@
 					<label for="price" class="col-sm-6 col-form-label">単価</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="itemPrice"
-							value="${item.price}" name="itemPrice">
+							placeholder="${item.price}" name="itemPrice">
 					</div>
 				</div>
 				<br>
-
+				<div class="form-group row">
+					<label for="detail" class="col-sm-6 col-form-label">詳細</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="itemDetail"
+							placeholder="${item.detail}" name="itemDetail">
+					</div>
+				</div>
+				<br>
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary">更新</button>
 
 				</div>
-				</div>
-				</div>
-			</form>
+			</div>
+		</div>
+	</form>
 </body>
 </html>
