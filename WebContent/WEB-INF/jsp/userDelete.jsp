@@ -17,10 +17,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+	<jsp:include page="/baselayout/header.jsp" />
 	<section class="jumbotron text-center">
 		<div class="container">
 			<h1>ユーザを削除しますか？</h1>
@@ -35,7 +32,7 @@
 			<div class="text-center">
 				<button type="submit" class="btn btn-danger">はい</button>
 				<a role="button" class="btn btn-primary"
-					href="#">いいえ</a>
+					href="UserListServlet">いいえ</a>
 					</div>
 			</div>
 		</div>

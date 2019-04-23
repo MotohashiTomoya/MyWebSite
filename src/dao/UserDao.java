@@ -219,5 +219,122 @@ public class UserDao {
 		return userList;
 	}
 
+	public UserDateBeans findByUserDetail(String id ) {
+		Connection conn = null;
 
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+
+			// SELECT文を準備
+			String sql = "SELECT * FROM user WHERE id=?";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, id);
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				UserDateBeans u = new UserDateBeans();
+				u.setId(rs.getInt("id"));
+				u.setLoginId(rs.getString("login_id"));
+				u.setName(rs.getString("name"));
+				u.setCreateDate(rs.getString("create_date"));
+
+
+				return u;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					return null;
+				}
+			}
+		}
+		return null;
+
+
+	}
+	public void UpdateUser(String Id,  String password, String name) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+			String sql="UPDATE user SET password=?,name=? WHERE id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setString(1,Code.code(password));
+			ps.setString(1,password);
+			ps.setString(2,name);
+			ps.setString(3,Id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally  {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
+	}
+	public void UpdateUser2(String Id, String name) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+			String sql="UPDATE user SET name=? WHERE id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1,name);
+			ps.setString(2,Id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally  {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public void DeleteUser(String Id) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+			String sql="DELETE FROM user WHERE id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,Id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally  {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
+	}
 }

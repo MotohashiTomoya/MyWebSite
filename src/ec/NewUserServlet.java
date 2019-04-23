@@ -62,7 +62,7 @@ public class NewUserServlet extends HttpServlet {
 		if(loginId.isEmpty()||password.isEmpty()||password1.isEmpty()||name.isEmpty()) {
 			request.setAttribute("errMsg", "入力された内容は正しくありません");
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewUser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/newUser.jsp");
 			dispatcher.forward(request, response);
 
 			return;
@@ -71,7 +71,7 @@ public class NewUserServlet extends HttpServlet {
 		if(!(password.equals(password1))) {
 			request.setAttribute("errMsg", "入力された内容は正しくありません");
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewUser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/newUser.jsp");
 			dispatcher.forward(request, response);
 
 			return;
@@ -80,7 +80,7 @@ public class NewUserServlet extends HttpServlet {
 		if(user==1) {
 			request.setAttribute("errMsg", "入力された内容は正しくありません");
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewUser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/newUser.jsp");
 			dispatcher.forward(request, response);
 
 			return;

@@ -17,10 +17,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+	<jsp:include page="/baselayout/header.jsp" />
 	<section class="jumbotron text-center">
 		<div class="container">
 			<h1>ユーザ詳細</h1>
@@ -46,19 +43,13 @@
 			<br>
 
 			<div class="row">
-				<div class="col-6">登録日時</div>
+				<div class="col-6">登録日</div>
 				<div class="col-6">
 					${user.createDate}
 				</div>
 			</div>
 			<br>
 
-			<div class="row">
-				<div class="col-6">更新日時</div>
-				<div class="col-6">
-					${user.updateDate}
-				</div>
-			</div>
 			<br>
 			</div>
 			</div>

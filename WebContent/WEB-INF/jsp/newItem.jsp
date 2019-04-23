@@ -17,13 +17,11 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+
+	<jsp:include page="/baselayout/header.jsp" />
 	<section class="jumbotron text-center">
 		<div class="container">
-			<h1>商品新規登録</h1>
+			<h1>商品登録</h1>
 		</div>
 	</section>
 	<form class="form-signin" action="UserUpdateServlet" method="post">

@@ -41,7 +41,7 @@
 						placeholder="パスワード" name="password">
 					<div class="text-center">
 						<br> <br>
-						<button type="button" class="btn btn-primary"><i class="fas fa-sign-in-alt fa-4x"></i></button>
+						<button type="submit" class="btn btn-primary">ログイン</button>
 					</div>
 				</form>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,14 +18,15 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+	<jsp:include page="/baselayout/header.jsp" />
 	<section class="jumbotron text-center">
 		<div class="container">
 			<h1>ユーザ更新</h1>
 		</div>
+		<br>
+		<c:if test="${errMsg != null}">
+				<div class="alert alert-danger" role="alert">${errMsg}</div>
+			</c:if>
 	</section>
 <form class="form-signin" action="UserUpdateServlet" method="post">
 <div class="album py-5 bg-light">
@@ -49,7 +51,7 @@
 					<label for="password" class="col-sm-6 col-form-label">パスワード(確認)</label>
 					<div class="col-sm-6">
 						<input type="password" class="form-control" id="password1"
-							placeholder="" name="password1">
+							placeholder="" name="passwordP">
 					</div>
 				</div>
 				<br>

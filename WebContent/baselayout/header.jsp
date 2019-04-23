@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <nav class="navbar navbar-dark bg-dark" role="navigation">
 	<div class="nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo" style="font-size:30px;">EC</a>
+		<a id="logo-container" href="ItemServlet" class="brand-logo" style="font-size:30px;">EC</a>
 		<div class="text-left">
 			<% boolean isLogin = session.getAttribute("isLogin")!=null?(boolean) session.getAttribute("isLogin"):false; %>
 
