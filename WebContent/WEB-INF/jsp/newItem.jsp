@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +24,12 @@
 		<div class="container">
 			<h1>商品登録</h1>
 		</div>
+		<br>
+		<c:if test="${errMsg != null}">
+					<div class="alert alert-danger" role="alert">${errMsg}</div>
+				</c:if>
 	</section>
-	<form class="form-signin" action="UserUpdateServlet" method="post">
+	<form class="form-signin"  enctype="multipart/form-data" action="NewItemServlet" method="post">
 		<div class="album py-5 bg-light">
 			<div class="container">
 
@@ -36,13 +41,14 @@
 					</div>
 				</div>
 				<br>
-
 				<div class="form-group row">
-					<label for="image" class="col-sm-6 col-form-label">画像</label>
+					<label for="detail" class="col-sm-6 col-form-label">詳細</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="image" name="image">
+						<input type="text" class="form-control" id="itemDetail"
+							name="itemDetail">
 					</div>
 				</div>
+
 				<br>
 				<div class="form-group row">
 					<label for="price" class="col-sm-6 col-form-label">単価</label>
@@ -52,11 +58,11 @@
 					</div>
 				</div>
 				<br>
+
 				<div class="form-group row">
-					<label for="detail" class="col-sm-6 col-form-label">詳細</label>
+					<label for="image" class="col-sm-6 col-form-label">画像ファイル</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="itemDetail"
-							name="itemDateil">
+						<input type="file" class="form-control" id="image" name="image">
 					</div>
 				</div>
 				<br>

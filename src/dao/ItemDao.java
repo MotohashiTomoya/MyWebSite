@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,5 +55,32 @@ public class ItemDao{
 			}
 		}
 		return Item;
+	}
+	public void InsertInformation(String itemName,String itemDetail, String itemPrice , String image) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+			String sql="INSERT INTO item(name,detail,price,file_name)VALUES(?,?,?,?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,itemName );
+			ps.setString(2,itemDetail);
+			ps.setString(3,itemPrice );
+			ps.setString(4,image);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally  {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
 	}
 }
