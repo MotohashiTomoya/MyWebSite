@@ -9,9 +9,10 @@ public class UserDateBeans{
 
 
 	// ログインセッションを保存するためのコンストラクタ
-	public UserDateBeans(String loginId, String name) {
+	public UserDateBeans(String loginId, String name,int id) {
 		this.loginId = loginId;
 		this.name = name;
+		this.id=id;
 	}
 
 	// 全てのデータをセットするコンストラクタ

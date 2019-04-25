@@ -16,10 +16,8 @@
 <title>商品詳細</title>
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+
+	<jsp:include page="/baselayout/header.jsp" />
 
 	<section class="jumbotron text-center">
 		<div class="container">
@@ -30,15 +28,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s6">
-					<div class="card">
-						<div class="card-image">
-							<img src="http://placehold.jp/500x500.png">
-						</div>
-					</div>
+					<img class="card-img" src="img/${item.fileName}">
 				</div>
 				<div class="col s6">
-					<h5>${item.price}円</h5>
-					<p>${item.detail}</p>
+					<h3>${item.price}円</h3>
+					<h5>${item.detail}</h5>
 				</div>
 			</div>
 		</div>

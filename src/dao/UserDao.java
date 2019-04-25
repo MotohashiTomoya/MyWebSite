@@ -43,7 +43,8 @@ public class UserDao {
 			// 必要なデータのみインスタンスのフィールドに追加
 			String loginIdData = rs.getString("login_id");
 			String nameData = rs.getString("name");
-			return new UserDateBeans(loginIdData, nameData);
+			int id=rs.getInt("id");
+			return new UserDateBeans(loginIdData, nameData,id);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

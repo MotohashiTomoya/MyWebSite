@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,22 +17,40 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+	<jsp:include page="/baselayout/header.jsp" />
+	<form action="ItemDeleteServlet" method="POST">
 	<section class="jumbotron text-center">
 		<div class="container">
-			<h1>商品を削除しますか？</h1>
+			<h1>この商品を削除しますか？</h1>
 		</div>
+		<br><br>
+		<div class="container">
+		<div class="row">
+		<input type="hidden" name="id" value="${item.id}">
+					<div class="col s6 text-center">
+						<button type="submit" class="btn btn-danger">はい</button>
+					</div>
+					<div class="col s6 text-center">
+						<a class="btn btn-primary" href="MasterItemServlet" role="button">いいえ</a>
+					</div>
+					</div>
+				</div>
 	</section>
-<form action="#" method="POST">
-		<div class="album py-5 bg-light text-center">
+
+		<div class="album py-5 bg-light">
 			<div class="container">
-			<button type="button" class="btn btn-danger">はい</button>
-			<a class="btn btn-primary" href="#" role="button">いいえ</a>
+			<div class="row">
+				<div class="col s6">
+					<img class="card-img" src="img/${item.fileName}">
+				</div>
+				<div class="col s6">
+				    <h1>${item.name}</h1>
+					<h3>${item.price}円</h3>
+					<h5>${item.detail}</h5>
+				</div>
 			</div>
 			</div>
-			</form>
-	</body>
-	</html>
+		</div>
+	</form>
+</body>
+</html>

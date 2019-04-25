@@ -38,15 +38,15 @@ public class LoginServlet extends HttpServlet {
 		// ログインセッションがある場合、ユーザ一覧画面にリダイレクトさせる
 
 
-		HttpSession session = request.getSession();
-		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
-
-		if(us==null) {
+//		HttpSession session = request.getSession();
+//		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
+//
+//		if(us==null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
-			return;
-		}
-			response.sendRedirect("UserListServlet");
+//			return;
+//		}
+//			response.sendRedirect("UserListServlet");
 
 	}
 
@@ -82,11 +82,12 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("userInfo", user);
 
-//		未実装　Idが1（管理者）だった場合管理用商品一覧に行くようにリダイレクトする。
+//		未実装　Idが1（admin）だった場合管理用商品一覧に行くようにリダイレクトする。
 
+			response.sendRedirect("MasterItemServlet");
 
 		// 商品一覧のサーブレットにリダイレクト
 		response.sendRedirect("ItemServlet");
-	}
 
+	}
 }

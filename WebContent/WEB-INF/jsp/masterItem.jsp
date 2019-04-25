@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,30 +18,31 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+	<jsp:include page="/baselayout/header.jsp" />
 	<section class="jumbotron text-center">
 		<div class="container">
 			<h1>管理用商品一覧</h1>
 		</div>
 	</section>
-	<form>
+	<form method="post" action="MasterItemServlet" class="form-horizontal">
 
 		<div class="album py-5 bg-light">
 			<div class="container">
-			<div class="text-right"><a href="#">商品新規登録</a></div>
+				<div class="text-right">
+				<a href="NewItemServlet">商品登録</a>
+			</div>
+			<br>
 			<br>
 				<div class="form-group row">
 					<label for="inputItem" class="col-sm-2 col-form-label">商品名</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="inputItem"
-							placeholder="">
+							placeholder="" name="name">
 					</div>
 				</div>
 				<div class="text-right">
-					<a type="button" class="btn btn-outline-secondary">検索</a>
+					<button type="submit" class="btn btn-dark">検索</button>
+
 
 				</div>
 				<hr>
@@ -52,17 +54,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th>${item.name}</th>
+						<c:forEach var="item" items="${Item}">
+							<tr>
+								<th>${item.name}</th>
+								<td><a class="btn btn-primary"href="ItemDetailServlet?id=${item.id}">詳細</a>
+									<a class="btn btn-success"href="ItemUpdateServlet?id=${item.id}">更新</a>
+									<a class="btn btn-danger"href="ItemDeleteServlet?id=${item.id}">削除</a></td>
 
-
-							<td><a class="btn btn-primary"
-												href="UserDetailServlet?id=${item.id}">詳細</a>
-											<a class="btn btn-success"
-												href="UserUpdateServlet?id=${item.id}">更新</a>
-											<a class="btn btn-danger"
-												href="UserDeleteServlet?id=${item.id}">削除</a></td>
-						</tr>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

@@ -14,16 +14,16 @@ import beans.ItemDateBeans;
 import dao.ItemDao;
 
 /**
- * Servlet implementation class ItemServlet
+ * Servlet implementation class MasterItemServlet
  */
-@WebServlet("/ItemServlet")
-public class ItemServlet extends HttpServlet {
+@WebServlet("/MasterItemServlet")
+public class MasterItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ItemServlet() {
+    public MasterItemServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,10 +39,9 @@ public class ItemServlet extends HttpServlet {
 		request.setAttribute("Item", item);
 
 		// 商品一覧のjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/masterItem.jsp");
 		dispatcher.forward(request, response);
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -56,8 +55,10 @@ public class ItemServlet extends HttpServlet {
 
 		request.setAttribute("Item", item);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/masterItem.jsp");
 		dispatcher.forward(request, response);
 	}
+
+
 
 }

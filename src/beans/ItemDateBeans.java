@@ -17,6 +17,10 @@ public class ItemDateBeans{
 
 	}
 
+	public ItemDateBeans() {
+
+	}
+
 
 	public int getId() {
 		return id;

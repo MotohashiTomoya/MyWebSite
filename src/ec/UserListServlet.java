@@ -58,7 +58,7 @@ public class UserListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO  未実装：検索処理全般
+
 		request.setCharacterEncoding("UTF-8");
 		String loginId = request.getParameter("loginId");
 		String name=request.getParameter("name");
