@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +38,8 @@
 				<div class="form-group row">
 					<label for="name" class="col-sm-2 col-form-label">ユーザ名</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="name"
-							placeholder="" name="name">
+						<input type="text" class="form-control" id="name" placeholder=""
+							name="name">
 					</div>
 				</div>
 
@@ -50,33 +50,34 @@
 				</div>
 				<hr>
 				<table class="table table-bordered">
+					<colgroup span="2" style="width: 275px;">
+					<colgroup span="1" style="width: 115px;">
 					<thead>
 						<tr>
-							<th scope="col">ログインID</th>
-							<th scope="col">ユーザ名</th>
-
-							<th scope="col"></th>
+							<th>ログインID</th>
+							<th>ユーザ名</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="user" items="${userList}">
-						<tr>
-							<th scope="row">${user.loginId}</th>
-							<td>${user.name}</td>
+						<c:forEach var="user" items="${userList}">
+							<tr>
+								<th scope="row">${user.loginId}</th>
+								<td>${user.name}</td>
 
-							<td><a class="btn btn-primary"
-												href="UserDetailServlet?id=${user.id}">詳細</a>
-											<a class="btn btn-success"
-												href="UserUpdateServlet?id=${user.id}">更新</a>
-											<a class="btn btn-danger"
-												href="UserDeleteServlet?id=${user.id}">削除</a></td>
-						</tr>
+								<td><a class="btn btn-primary"
+									href="UserDetailServlet?id=${user.id}">詳細</a> <a
+									class="btn btn-success" href="UserUpdateServlet?id=${user.id}">更新</a>
+									<a class="btn btn-danger"
+									href="UserDeleteServlet?id=${user.id}">削除</a></td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</form>
+
 
 </body>
 </html>

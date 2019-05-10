@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.UserDateBeans;
+import common.Code;
 import db.DBManager;
 
 public class UserDao {
@@ -31,8 +32,7 @@ public class UserDao {
 			// SELECTを実行し、結果表を取得
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, loginId);
-			pStmt.setString(2,password);
-//			pStmt.setString(2, Code.code(password));
+			pStmt.setString(2, Code.code(password));
 			ResultSet rs = pStmt.executeQuery();
 
 			// 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
@@ -119,8 +119,7 @@ public class UserDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,loginId );
 			ps.setString(2,name);
-			ps.setString(3,password );
-//			ps.setString(3,Code.code(password));
+			ps.setString(3,Code.code(password));
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -270,8 +269,7 @@ public class UserDao {
 			conn = DBManager.getConnection();
 			String sql="UPDATE user SET password=?,name=? WHERE id=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setString(1,Code.code(password));
-			ps.setString(1,password);
+			ps.setString(1,Code.code(password));
 			ps.setString(2,name);
 			ps.setString(3,Id);
 			ps.executeUpdate();

@@ -17,31 +17,27 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Navbar</a>
-	</nav>
-	<!-- <jsp:include page="/baselayout/header.jsp" />jsp変更時にこれにする -->
+
+	<jsp:include page="/baselayout/header.jsp" />
 	<section class="jumbotron text-center">
 		<div class="container">
 			<h1>商品更新</h1>
 		</div>
 	</section>
-	<form class="form-signin" action="UserUpdateServlet" method="post">
+	<form class="form-signin" action="ItemUpdateServlet" method="post">
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
-					<div class="col-6">商品CODE</div>
-					<div class="col-6">${item.code}</div>
-					<input type="hidden" name="itemId" value="${item.id}">
+					<div class="col-6">商品ID</div>
+					<div class="col-6">${item.id}</div>
 				</div>
-				<br> <br> <input type="hidden" name="itemId"
-					value="${item.id}">
-
+				<br> <br>
 				<div class="form-group row">
 					<label for="itemName" class="col-sm-6 col-form-label">商品名</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="itemName"
 							placeholder="${item.name}" name="itemName">
+							<input type="hidden" name="itemId" value="${user.id}">
 					</div>
 				</div>
 				<br>
@@ -50,7 +46,7 @@
 					<label for="image" class="col-sm-6 col-form-label">画像</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="image"
-							placeholder="${item.image}" name="image">
+							placeholder="${item.fileName}" name="image">
 					</div>
 				</div>
 				<br>

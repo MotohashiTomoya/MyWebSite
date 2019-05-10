@@ -48,9 +48,19 @@
 					${user.createDate}
 				</div>
 			</div>
+			<div class=text-center>
 			<br>
-
 			<br>
+			<div class="row">
+			<div class="col s6 text-center">
+			<a class="btn btn-success"href="UserUpdateServlet?id=${user.id}">更新</a>
+			</div>
+			<div class="col s6 text-center">
+				<a class="btn btn-danger" href="UserDeleteServlet?id=${user.id}">削除</a>
+				</div>
+				<br>
+				</div>
+				</div>
 			</div>
 			</div>
 			</form>

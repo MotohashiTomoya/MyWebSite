@@ -28,10 +28,13 @@
 
 		<div class="album py-5 bg-light">
 			<div class="container">
-				<div class="text-right">
-				<a href="NewItemServlet">商品登録</a>
+			<div class="text-right">
+				<a href="UserListServlet">ユーザ一覧</a>
 			</div>
 			<br>
+			<div class="text-right">
+				<a href="NewItemServlet">商品登録</a>
+			</div>
 			<br>
 				<div class="form-group row">
 					<label for="inputItem" class="col-sm-2 col-form-label">商品名</label>
@@ -47,6 +50,8 @@
 				</div>
 				<hr>
 				<table class="table table-bordered">
+				<colgroup span="1" style="width: 350px;">
+					<colgroup span="1" style="width: 70px;">
 					<thead>
 						<tr>
 							<th>商品名</th>

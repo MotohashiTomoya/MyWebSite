@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.ItemDateBeans;
+import beans.UserDateBeans;
 import dao.ItemDao;
 
 /**
@@ -32,6 +34,11 @@ public class MasterItemServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
+
+		if(us.getLoginId().equals("admin")) {
+
 		ItemDao itemDao=new ItemDao();
 		List<ItemDateBeans> item = itemDao.findAll();
 
@@ -41,6 +48,7 @@ public class MasterItemServlet extends HttpServlet {
 		// 商品一覧のjspにフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/masterItem.jsp");
 		dispatcher.forward(request, response);
+		}
 	}
 
 	/**

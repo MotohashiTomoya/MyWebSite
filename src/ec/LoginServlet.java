@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.UserDateBeans;
-import dao.UserDao;
-;
-
+import dao.UserDao;;
 
 /**
  * Servlet implementation class LoginServlet
@@ -22,39 +20,39 @@ import dao.UserDao;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		// ログインセッションがある場合、ユーザ一覧画面にリダイレクトさせる
 
+				HttpSession session = request.getSession();
+				UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
 
-//		HttpSession session = request.getSession();
-//		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
-//
-//		if(us==null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-			dispatcher.forward(request, response);
-//			return;
-//		}
-//			response.sendRedirect("UserListServlet");
+				if(us==null) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		dispatcher.forward(request, response);
+					return;
+				}
+					response.sendRedirect("ItemServlet");
 
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stubUser
 		request.setCharacterEncoding("UTF-8");
 
@@ -81,13 +79,13 @@ public class LoginServlet extends HttpServlet {
 		// セッションにユーザの情報をセット
 		HttpSession session = request.getSession();
 		session.setAttribute("userInfo", user);
-
-//		未実装　Idが1（admin）だった場合管理用商品一覧に行くようにリダイレクトする。
-
+		System.out.println(loginId);
+		//		未実装　loginIdが（admin）だった場合管理用商品一覧に行くようにリダイレクトする。
+		if (loginId.equals("admin")) {
 			response.sendRedirect("MasterItemServlet");
-
-		// 商品一覧のサーブレットにリダイレクト
-		response.sendRedirect("ItemServlet");
-
+		} else {
+			// 商品一覧のサーブレットにリダイレクト
+			response.sendRedirect("ItemServlet");
+		}
 	}
 }

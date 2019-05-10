@@ -26,13 +26,15 @@
 	<form class="form-signin" action="UserDeleteServlet" method="post">
 	<div class="album py-5 bg-light">
 			<div class="container">
-
+			<div class="row">
 
 			<input type="hidden" name="id" value="${user.id}">
-			<div class="text-center">
-				<button type="submit" class="btn btn-danger">はい</button>
-				<a role="button" class="btn btn-primary"
-					href="UserListServlet">いいえ</a>
+			<div class="col s6 text-center">
+						<button type="submit" class="btn btn-danger">はい</button>
+					</div>
+					<div class="col s6 text-center">
+						<a class="btn btn-primary" href="UserListServlet" role="button">いいえ</a>
+					</div>
 					</div>
 			</div>
 		</div>

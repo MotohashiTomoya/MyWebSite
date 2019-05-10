@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.UserDateBeans;
 import dao.UserDao;
@@ -32,13 +33,13 @@ public class UserDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//ログインセッションがない場合、ログイン画面にリダイレクトさせる
-//				HttpSession session = request.getSession();
-//				UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
-//
-//				if(us==null) {
-//					response.sendRedirect("LoginServlet");
-//					return;
-//				}
+				HttpSession session = request.getSession();
+				UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
+
+				if(us==null) {
+					response.sendRedirect("LoginServlet");
+					return;
+				}
 
 				// TODO Auto-generated method stub
 				request.setCharacterEncoding("UTF-8");
