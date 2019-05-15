@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,38 +24,26 @@
 		<div class="container">
 			<h1>商品更新</h1>
 		</div>
+		<br>
+		<c:if test="${errMsg != null}">
+			<div class="alert alert-danger" role="alert">${errMsg}</div>
+		</c:if>
 	</section>
-	<form class="form-signin" action="ItemUpdateServlet" method="post">
+	<form class="form-signin" action="ItemUpdateServlet" method="post" enctype="multipart/form-data">
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
 					<div class="col-6">商品ID</div>
 					<div class="col-6">${item.id}</div>
+					<input type="hidden" name="itemId" value="${item.id}">
 				</div>
 				<br> <br>
 				<div class="form-group row">
 					<label for="itemName" class="col-sm-6 col-form-label">商品名</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="itemName"
-							placeholder="${item.name}" name="itemName">
-							<input type="hidden" name="itemId" value="${user.id}">
-					</div>
-				</div>
-				<br>
+							value="${item.name}" name="itemName">
 
-				<div class="form-group row">
-					<label for="image" class="col-sm-6 col-form-label">画像</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="image"
-							placeholder="${item.fileName}" name="image">
-					</div>
-				</div>
-				<br>
-				<div class="form-group row">
-					<label for="price" class="col-sm-6 col-form-label">単価</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="itemPrice"
-							placeholder="${item.price}" name="itemPrice">
 					</div>
 				</div>
 				<br>
@@ -62,9 +51,28 @@
 					<label for="detail" class="col-sm-6 col-form-label">詳細</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="itemDetail"
-							placeholder="${item.detail}" name="itemDetail">
+							value="${item.detail}" name="itemDetail">
 					</div>
 				</div>
+
+				<br>
+				<div class="form-group row">
+					<label for="price" class="col-sm-6 col-form-label">単価</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="itemPrice"
+							value="${item.price}" name="itemPrice">
+					</div>
+				</div>
+				<br>
+
+				<div class="form-group row">
+					<label for="image" class="col-sm-6 col-form-label">画像ファイル</label>
+					<div class="col-sm-6">
+						<input type="file" class="form-control" id="image"
+						  name="image">
+					</div>
+				</div>
+
 				<br>
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary">更新</button>

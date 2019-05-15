@@ -100,14 +100,14 @@ public class UserUpdateServlet extends HttpServlet {
 
 		} if (password.isEmpty() || passwordP.isEmpty()) {
 			dao.UpdateUser2(id, name);
-			response.sendRedirect("UserListServlet");
+			response.sendRedirect("ItemServlet");
 		}else {
 			// success
 			// 登録処理
 			dao.UpdateUser(id, password, name);
 
 			// 一覧画面に遷移（doGet実行）
-			response.sendRedirect("UserListServlet");
+			response.sendRedirect("ItemServlet");
 		}
 
 

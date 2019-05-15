@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import beans.ItemDateBeans;
 import dao.ItemDao;
@@ -16,6 +18,7 @@ import dao.ItemDao;
  * Servlet implementation class ItemUpdateServlet
  */
 @WebServlet("/ItemUpdateServlet")
+@MultipartConfig(location="C:\\Users\\User\\Documents\\GitHub\\MyWebSite\\WebContent\\img", maxFileSize=1048576)
 public class ItemUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,8 +57,54 @@ public class ItemUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+
+		String itemId=request.getParameter("itemId");
+		String itemName=request.getParameter("itemName");
+		String itemDetail=request.getParameter("itemDetail");
+		String itemPrice=request.getParameter("itemPrice");
+		Part part = request.getPart("image");
+
+//		if文を追加してfileに値が入っているときと入っていない時を分岐させうまくやる
+//
+
+
+        ItemDao dao=new ItemDao();
+
+//		空欄になっている場合
+		if(itemName.isEmpty()||itemDetail.isEmpty()||itemPrice.isEmpty() || part.getSubmittedFileName().isEmpty()) {
+			ItemDateBeans i=new ItemDateBeans();
+			i.setId(Integer.parseInt(itemId));
+			i.setName(itemName);
+			i.setDetail(itemDetail);
+			i.setPrice(itemPrice);
+			request.setAttribute("item", i);
+			request.setAttribute("errMsg", "入力された内容は正しくありません");
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/itemUpdate.jsp");
+			dispatcher.forward(request, response);
+
+			return;
+		}
+
+        String image = this.getFileName(part);
+        part.write(image);
+
+		dao.UpdateItem(itemName,itemDetail,itemPrice,image, itemId);
+		response.sendRedirect("MasterItemServlet");
 	}
+
+	 private String getFileName(Part part) {
+	        String name = null;
+	        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+	            if (dispotion.trim().startsWith("filename")) {
+	                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+	                name = name.substring(name.lastIndexOf("\\") + 1);
+	                break;
+	            }
+	        }
+	        return name;
+	    }
+
 
 }

@@ -62,7 +62,7 @@ public class NewItemServlet extends HttpServlet {
 		}
 		ItemDao dao=new ItemDao();
 		dao.InsertInformation(itemName,itemDetail,itemPrice,image);
-		response.sendRedirect("ItemServlet");
+		response.sendRedirect("MasterItemServlet");
 	}
 
 	 private String getFileName(Part part) {

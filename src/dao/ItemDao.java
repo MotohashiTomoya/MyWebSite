@@ -202,4 +202,32 @@ public class ItemDao{
 		return itemList;
 	}
 
+	public void UpdateItem(String itemName,String itemDetail, String itemPrice , String image ,String itemId) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+			String sql="UPDATE item SET name=?,detail=?,price=?,file_name=? WHERE id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,itemName );
+			ps.setString(2,itemDetail);
+			ps.setString(3,itemPrice );
+			ps.setString(4,image);
+			ps.setString(5,itemId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally  {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
+	}
 }
