@@ -39,8 +39,8 @@
 		<br>
 		<br>
 		<div class="text-center">
-			<form action="#" method="POST">
-				<input type="hidden" name="item_id" value="${item.id}">
+			<form action="CartAddServlet" method="POST">
+				<input type="hidden" name="itemId" value="${item.id}">
 				<button class="btn waves-effect waves-light btn btn-primary"
 					type="submit" name="action">
 					カートに入れる<i class="fas fa-cart-plus"></i>

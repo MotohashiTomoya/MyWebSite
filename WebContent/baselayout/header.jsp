@@ -4,7 +4,12 @@
 <!DOCTYPE html>
 <nav class="navbar navbar-dark bg-dark" role="navigation">
 	<div class="nav-wrapper container">
-		<a id="logo-container" href="ItemServlet" class="brand-logo" style="font-size:30px;">EC</a>
+		<c:if test="${userInfo.loginId!='admin'}">
+			<a id="logo-container" href="ItemServlet" class="brand-logo" style="font-size:30px;">EC</a>
+		</c:if>
+		<c:if test="${userInfo.loginId=='admin'}">
+			<a id="logo-container" href="MasterItemServlet" class="brand-logo" style="font-size:30px;">EC</a>
+		</c:if>
 		<div class="text-left">
 <c:choose>
 <c:when test="${userInfo.loginId==null}">

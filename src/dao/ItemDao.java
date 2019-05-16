@@ -227,7 +227,38 @@ public class ItemDao{
 				}
 			}
 		}
-
-
 	}
+	public static ItemDateBeans getItemByItemID(int itemId) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			con = DBManager.getConnection();
+
+			st = con.prepareStatement("SELECT * FROM m_item WHERE id = ?");
+			st.setInt(1, itemId);
+
+			ResultSet rs = st.executeQuery();
+
+			ItemDateBeans item = new ItemDateBeans();
+			if (rs.next()) {
+				item.setId(rs.getInt("id"));
+				item.setName(rs.getString("name"));
+				item.setDetail(rs.getString("detail"));
+				item.setPrice(rs.getString("price"));
+				item.setFileName(rs.getString("file_name"));
+			}
+
+
+
+			return item;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
 }
