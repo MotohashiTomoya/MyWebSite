@@ -39,7 +39,7 @@
 		<br>
 		<br>
 		<div class="text-center">
-			<form action="CartAddServlet" method="POST">
+			<form action="ItemAddServlet" method="POST">
 				<input type="hidden" name="itemId" value="${item.id}">
 				<button class="btn waves-effect waves-light btn btn-primary"
 					type="submit" name="action">

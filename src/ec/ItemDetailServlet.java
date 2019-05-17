@@ -35,7 +35,7 @@ public class ItemDetailServlet extends HttpServlet {
 		// URLからGETパラメータとしてIDを受け取る
 		String id = request.getParameter("id");
 
-		// TODO  未実装：idを引数にして、idに紐づくユーザ情報を出力する
+		// TODO  未実装：idを引数にして、idに紐づくアイテム情報を出力する
 		ItemDao dao = new ItemDao();
 		ItemDateBeans item = dao.findByItemDetail(id);
 
@@ -46,13 +46,6 @@ public class ItemDetailServlet extends HttpServlet {
 		request.setAttribute("item", item);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/itemDetail.jsp");
 		dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 
 }

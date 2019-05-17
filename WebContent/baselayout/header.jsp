@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+<form>
+<input type="hidden" name="userId" value="${userInfo.id}">
 <nav class="navbar navbar-dark bg-dark" role="navigation">
 	<div class="nav-wrapper container">
 		<c:if test="${userInfo.loginId!='admin'}">
@@ -28,3 +30,4 @@
 			</div>
 	</div>
 </nav>
+</form>

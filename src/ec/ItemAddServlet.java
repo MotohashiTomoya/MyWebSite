@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import beans.BuyDateBeans;
+import beans.UserDateBeans;
+import dao.BuyDao;
 
 /**
  * Servlet implementation class ItemAddServlet
@@ -26,7 +31,20 @@ public class ItemAddServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//カートに商品を追加するときの機能実装
+		request.setCharacterEncoding("UTF-8");
+		String itemId=request.getParameter("itemId");
+		HttpSession session = request.getSession();
+		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
+
+
+
+		BuyDao buyDao =new BuyDao();
+		BuyDateBeans buy = buyDao.InsertInfomation(itemId, us.getId());
+
+		request.setAttribute("buy", buy);
+
+		response.sendRedirect("ItemServlet");
+
 
 	}
 

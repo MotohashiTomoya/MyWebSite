@@ -28,17 +28,17 @@
 <div class="album py-5 bg-light">
 		<div class="container">
 			<div class="row">
-				<c:forEach var="item" items="${Item}">
+				<c:forEach var="buy" items="${buy}">
 					<div class="col-md-4">
 						<div class="card mb-4">
 							<div class="img-container--table-cell">
-								<img class="card-img" src="img/${item.fileName}">
+								<img class="card-img" src="img/${buy.fileName}">
 							</div>
 							<div class="card-body">
-								<p class="card-text">${item.name}</p>
+								<p class="card-text">${buy.name}</p>
 								<div class="d-flex justify-content-between align-items-center">
-									<a class="btn btn-primary"href="CartDetailServlet?id=${cart.id}">削除</a>
-									<small class="text-muted">${item.price}円</small>
+									<a class="btn btn-primary"href="CartDeleteServlet?id=${buy.id}">削除</a>
+									<small class="text-muted">${buy.price}円</small>
 								</div>
 							</div>
 						</div>
