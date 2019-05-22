@@ -11,6 +11,8 @@ public class BuyDateBeans  implements Serializable {
 	private String detail;
 	private String price;
 	private String fileName;
+
+
 	public int getId() {
 		return id;
 	}

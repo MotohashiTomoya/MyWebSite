@@ -85,4 +85,41 @@ public class BuyDao{
 		}
 		return Buy;
 }
+
+	public static int totalPrice(int userId) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+
+			// SELECT文を準備
+
+			String sql = "SELECT SUM(item.price) as total FROM buy INNER JOIN item ON buy.item_id=item.id WHERE user_id=?";
+
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, userId);
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				int total=rs.getInt("total");
+				return total;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			// データベース切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					return 0;
+				}
+			}
+		}
+		return 0;
+}
+
+
 }

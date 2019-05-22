@@ -23,7 +23,7 @@
 </div>
 <br><br>
 
-<a class="btn btn-primary" href="#" role="button">レジに進む</a>
+<a class="btn btn-primary" href="BuyConfirmServlet" role="button">レジに進む</a>
   </section>
 <div class="album py-5 bg-light">
 		<div class="container">

@@ -16,16 +16,16 @@ import beans.UserDateBeans;
 import dao.BuyDao;
 
 /**
- * Servlet implementation class CartServlet
+ * Servlet implementation class CartConfirmServlet
  */
-@WebServlet("/CartServlet")
-public class CartServlet extends HttpServlet {
+@WebServlet("/BuyConfirmServlet")
+public class BuyConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartServlet() {
+    public BuyConfirmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,14 +39,26 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
 		ArrayList<BuyDateBeans> buy = BuyDao.findcart(us.getId());
+		int total= BuyDao.totalPrice(us.getId());
 
-		// リクエストスコープにユーザ一覧情報をセット
+
 		request.setAttribute("buy", buy);
+		request.setAttribute("total", total);
 
-		// カートのjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
-		dispatcher.forward(request, response);
+
+		// 購入確認のjspにフォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/buyConfirm.jsp");
+				dispatcher.forward(request, response);
+
+
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 
 }

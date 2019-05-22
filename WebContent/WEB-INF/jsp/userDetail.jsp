@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,46 +24,62 @@
 			<h1>ユーザ詳細</h1>
 		</div>
 	</section>
-<form class="form-signin" action="UserDetailServlet" method="get">
-<div class="album py-5 bg-light">
+	<form class="form-signin" action="UserDetailServlet" method="get">
+		<div class="album py-5 bg-light">
 			<div class="container">
-			<div class="row">
-				<div class="col-6">ログインID</div>
-				<div class="col-6">
-					${user.loginId}
-				</div>
-			</div>
-			<br>
-
-			<div class="row">
-				<div class="col-6">ユーザ名</div>
-				<div class="col-6">
-					${user.name}
-				</div>
-			</div>
-			<br>
-
-			<div class="row">
-				<div class="col-6">登録日</div>
-				<div class="col-6">
-					${user.createDate}
-				</div>
-			</div>
-			<div class=text-center>
-			<br>
-			<br>
-			<div class="row">
-			<div class="col s6 text-center">
-			<a class="btn btn-success"href="UserUpdateServlet?id=${user.id}">更新</a>
-			</div>
-			<div class="col s6 text-center">
-				<a class="btn btn-danger" href="UserDeleteServlet?id=${user.id}">削除</a>
+				<div class="row">
+					<div class="col-6">ログインID</div>
+					<div class="col-6">${user.loginId}</div>
 				</div>
 				<br>
+
+				<div class="row">
+					<div class="col-6">ユーザ名</div>
+					<div class="col-6">${user.name}</div>
 				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-6">登録日</div>
+					<div class="col-6">${user.createDate}</div>
 				</div>
+				<div class=text-center>
+					<br> <br>
+					<div class="row">
+						<div class="col s6 text-center">
+							<a class="btn btn-success" href="UserUpdateServlet?id=${user.id}">更新</a>
+						</div>
+						<div class="col s6 text-center">
+							<a class="btn btn-danger" href="UserDeleteServlet?id=${user.id}">削除</a>
+						</div>
+						<br>
+					</div>
+				</div>
+				<br><br><br>
+				<h3>購入履歴</h3>
+				<br><br>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">商品名</th>
+							<th scope="col">単価</th>
+							<th scope="col">購入日時</th>
+							<th scope="col">詳細</th>
+						</tr>
+					</thead>
+					<tbody>
+					<!-- 	<c:forEach var="buyd" items="${buyd}"> -->
+							<tr>
+								<td>${buyd.name}</td>
+								<td>${buyd.price}</td>
+								<td>${buyd.createDate}</td>
+								<td class="text-center"><a class="btn btn-info"href="ItemDetailServlet?id=${buyd.item_id}"></a></td>
+							</tr>
+					<!--</c:forEach>  -->
+					</tbody>
+				</table>
 			</div>
-			</div>
-			</form>
+		</div>
+	</form>
 </body>
 </html>
