@@ -68,14 +68,14 @@
 						</tr>
 					</thead>
 					<tbody>
-					<!-- 	<c:forEach var="buyd" items="${buyd}"> -->
+					<c:forEach var="buyd" items="${buyd}">
 							<tr>
 								<td>${buyd.name}</td>
 								<td>${buyd.price}</td>
 								<td>${buyd.createDate}</td>
 								<td class="text-center"><a class="btn btn-info"href="ItemDetailServlet?id=${buyd.item_id}"></a></td>
 							</tr>
-					<!--</c:forEach>  -->
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>

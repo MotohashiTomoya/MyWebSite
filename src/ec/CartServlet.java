@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.BuyDateBeans;
+import beans.CartDateBeans;
 import beans.UserDateBeans;
-import dao.BuyDao;
+import dao.CartDao;
 
 /**
  * Servlet implementation class CartServlet
@@ -38,10 +38,10 @@ public class CartServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
-		ArrayList<BuyDateBeans> buy = BuyDao.findcart(us.getId());
+		ArrayList<CartDateBeans> cart = CartDao.findcart(us.getId());
 
 		// リクエストスコープにユーザ一覧情報をセット
-		request.setAttribute("buy", buy);
+		request.setAttribute("cart", cart);
 
 		// カートのjspにフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");

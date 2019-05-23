@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.BuyDateBeans;
+import beans.CartDateBeans;
 import beans.UserDateBeans;
-import dao.BuyDao;
+import dao.CartDao;
 
 /**
  * Servlet implementation class ItemAddServlet
@@ -38,10 +38,10 @@ public class ItemAddServlet extends HttpServlet {
 
 
 
-		BuyDao buyDao =new BuyDao();
-		BuyDateBeans buy = buyDao.InsertInfomation(itemId, us.getId());
+		CartDao cartDao =new CartDao();
+		CartDateBeans cart = cartDao.InsertInfomation(itemId, us.getId());
 
-		request.setAttribute("buy", buy);
+		request.setAttribute("cart", cart);
 
 		response.sendRedirect("ItemServlet");
 

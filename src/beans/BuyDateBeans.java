@@ -1,16 +1,14 @@
 package beans;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BuyDateBeans  implements Serializable {
 	private int id;
-	private int itemId;
 	private int userId;
+	private Date buyDate;
 
-	private String name;
-	private String detail;
-	private String price;
-	private String fileName;
 
 
 	public int getId() {
@@ -19,42 +17,20 @@ public class BuyDateBeans  implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getItemId() {
-		return itemId;
-	}
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getName() {
-		return name;
+	public Date getBuyDate() {
+		return buyDate;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setBuyDate(Date buyDate) {
+		this.buyDate = buyDate;
 	}
-	public String getDetail() {
-		return detail;
+	public String getFormatDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+		return sdf.format(buyDate);
 	}
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	public String getFileName() {
-		return fileName;
-	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-
 }

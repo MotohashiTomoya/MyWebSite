@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.BuyDateBeans;
+import beans.BuyDetailDateBeans;
+import beans.CartDateBeans;
 import beans.UserDateBeans;
-import dao.BuyDao;
+import dao.CartDao;
 
 /**
  * Servlet implementation class CartConfirmServlet
@@ -38,11 +40,11 @@ public class BuyConfirmServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
-		ArrayList<BuyDateBeans> buy = BuyDao.findcart(us.getId());
-		int total= BuyDao.totalPrice(us.getId());
+		ArrayList<CartDateBeans> cart = CartDao.findcart(us.getId());
+		int total= CartDao.totalPrice(us.getId());
 
 
-		request.setAttribute("buy", buy);
+		request.setAttribute("cart", cart);
 		request.setAttribute("total", total);
 
 
@@ -57,8 +59,24 @@ public class BuyConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+
+
+		HttpSession session = request.getSession();
+		UserDateBeans us=(UserDateBeans) session.getAttribute("userInfo");
+//		buyにinsert
+		BuyDateBeans bdb = new BuyDateBeans();
+		bdb.setUserId((int) session.getAttribute("userId"));
+		request.setAttribute("bdb", bdb);
+//		buy_detailにinsert
+		BuyDetailDateBeans bddb=new BuyDetailDateBeans();
+		request.setAttribute("bddb", bddb);
+//		カートを削除
+		CartDao cartDao = new CartDao();
+		cartDao.DeleteCart(us.getId());
+
+		 response.sendRedirect("ItemServlet");
+
 	}
 
 }

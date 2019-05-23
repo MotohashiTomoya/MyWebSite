@@ -2,10 +2,10 @@ package beans;
 
 import java.io.Serializable;
 
-public class BuyDetailDateBeans  implements Serializable {
+public class CartDateBeans  implements Serializable {
 	private int id;
 	private int itemId;
-	private int buyId;
+	private int userId;
 
 	private String name;
 	private String detail;
@@ -23,11 +23,11 @@ public class BuyDetailDateBeans  implements Serializable {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-	public int getBuyId() {
-		return buyId;
+	public int getUserId() {
+		return userId;
 	}
-	public void setBuyId(int buyId) {
-		this.buyId = buyId;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getName() {
 		return name;

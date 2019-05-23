@@ -41,10 +41,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="buy" items="${buy}">
+						<c:forEach var="cart" items="${cart}">
 							<tr>
-								<th class="text-center">${buy.name}</th>
-								<th class="text-center">${buy.price}円</th>
+								<th class="text-center">${cart.name}</th>
+								<th class="text-center">${cart.price}円</th>
 
 							</tr>
 						</c:forEach>
